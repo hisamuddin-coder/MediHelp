@@ -29,3 +29,193 @@ ul {
 a {
   text-decoration: none;
 }
+/*----------------------------------
+GLOBAL STYLE
+----------------------------------*/
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+/*----------------------------------
+HEADER
+----------------------------------*/
+.top-nav {
+  background-color: rgb(65, 80, 134);
+}
+.top-links-container {
+  padding: 1rem 0;
+}
+.top-contact-links {
+  gap: 1.5rem;
+}
+.top-contact-link {
+  color: rgb(255, 255, 255);
+  font-size: 0.875rem;
+  gap: 0.5rem;
+}
+.top-contact-link i {
+  font-size: 1rem;
+}
+.top-social-links {
+  gap: 1rem;
+}
+.top-social-link {
+  color: rgb(65, 80, 134);
+  font-size: 0.875rem;
+  background-color: rgb(255, 255, 255);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  justify-content: center;
+}
+.top-social-link:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgb(24, 139, 77);
+}
+@media screen and (max-width: 768px) {
+  .top-social-links {
+    display: none;
+  }
+}
+/*----------------------------------
+NAVBAR
+----------------------------------*/
+.nav {
+  position: relative;
+  background-color: rgb(255, 255, 255);
+  padding: 1.5rem 0;
+}
+.nav-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+.nav-fixed {
+  padding: 1.25rem;
+}
+.logo {
+  display: block;
+  color: rgb(65, 80, 134);
+  font-size: 1.7rem;
+  font-weight: 900;
+  font-family: "Ubuntu", sans-serif;
+  user-select: none;
+}
+.logo span {
+  color: rgb(24, 139, 77);
+}
+.nav-links {
+  gap: 2rem;
+}
+.nav-link {
+  position: relative;
+  color: rgb(65, 80, 134);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.1px;
+  cursor: pointer;
+  user-select: none;
+}
+.nav-link::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: rgb(65, 80, 134);
+  bottom: -5px;
+  transform-origin: center;
+  transform: scaleX(0);
+  transition: all 400ms ease;
+}
+.nav-link:hover::before {
+  transform: scaleX(1);
+}
+.nav-toggle {
+  display: none;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.nav-toggle span,
+.nav-toggle span::before,
+.nav-toggle span::after {
+  position: relative;
+  display: block;
+  width: 28px;
+  height: 2px;
+  background-color: rgb(65, 80, 134);
+  border-radius: 5px;
+}
+.nav-toggle span::before,
+.nav-toggle span::after {
+  content: "";
+  position: absolute;
+  transition: all 400ms ease;
+}
+.nav-toggle span::before {
+  top: -8px;
+}
+.nav-toggle span::after {
+  top: 8px;
+}
+.nav-toggle.active span {
+  visibility: hidden;
+}
+.nav-toggle.active span::before {
+  visibility: visible;
+  transform: translateY(8px) rotate(45deg);
+}
+.nav-toggle.active span::after {
+  visibility: visible;
+  transform: translateY(-8px) rotate(-45deg);
+}
+@media screen and (max-width: 992px) {
+  .nav-links {
+    gap: 1.25rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .nav {
+    position: relative;
+  }
+  .nav-links-container {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+  }
+  .nav-links {
+    all: unset;
+    list-style-type: none;
+  }
+  .nav-link {
+    display: block;
+    background-color: rgb(255, 255, 255);
+    border-top: 1px solid rgb(243, 243, 243);
+    border-bottom: 1px solid rgb(243, 243, 243);
+    padding: 1.5rem 5%;
+  }
+  .nav-link::before {
+    display: none;
+  }
+  .nav-link:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(65, 80, 134);
+  }
+  .nav-toggle {
+    display: flex;
+  }
+}
