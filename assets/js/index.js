@@ -16,7 +16,6 @@ navToggle.addEventListener("click", () => {
 //////////////// STICKY NAV /////////////////////
 const header = document.querySelector("header");
 const nav = document.querySelector(".nav");
-const navHeight = nav.getBoundingClientRect().height;
 
 const handleNavFixed = function (entries) {
   const [entry] = entries;
@@ -31,14 +30,43 @@ const headerObserver = new IntersectionObserver(handleNavFixed, {
   rootMargin: "",
 });
 headerObserver.observe(header);
+//////////////// animation section /////////////////////
+const about = document.getElementById("about");
+const aboutContent = document.querySelector(".about-content");
+const aboutShowcase = document.querySelector(".about-showcase");
 
+const handleAbout = (entries, observer) => {
+  const [entry] = entries;
+  /*
+  if (entry.isIntersecting) {
+    aboutContent.classList.add("in-view");
+    aboutShowcase.classList.add("in-view");
+    // Unobserve the element once it is in view
+    observer.unobserve(entry.target);
+  } else {
+    aboutContent.classList.remove("in-view");
+    aboutShowcase.classList.remove("in-view");
+  }*/
+  entry.isIntersecting
+    ? (aboutContent.classList.add("in-view"),
+      aboutShowcase.classList.add("in-view"),
+      observer.unobserve(entry.target))
+    : (aboutContent.classList.remove("in-view"),
+      aboutShowcase.classList.remove("in-view"));
+};
+
+const aboutObserver = new IntersectionObserver(handleAbout, {
+  root: null,
+  threshold: 0.2,
+});
+
+aboutObserver.observe(about);
 //////////////// SLIDER /////////////////////
 document.addEventListener("DOMContentLoaded", () => {
   const slides = document.querySelectorAll(".slide");
   const sliderContainer = document.querySelector(".slider-container");
-  //   const slider = document.querySelector(".slider");
-  const leftButton = document.querySelector(".left");
-  const rightButton = document.querySelector(".right");
+  const leftButton = document.querySelector(".btn-left");
+  const rightButton = document.querySelector(".btn-right");
   const paginator = document.querySelector(".paginator-container");
 
   let curIndex = 0;

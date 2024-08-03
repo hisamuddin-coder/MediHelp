@@ -29,6 +29,22 @@ ul {
 a {
   text-decoration: none;
 }
+h2 {
+  color: rgb(35, 35, 35);
+  /* font-size: 2.5rem; */
+  font-size: clamp(1.75rem, 1.2rem + 1.7vw, 2.5rem);
+  font-weight: 900;
+  font-family: "Ubuntu", sans-serif;
+  letter-spacing: 1px;
+  margin-bottom: 0.625rem;
+}
+h2 span {
+  color: rgb(65, 80, 134);
+}
+p {
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
 /*----------------------------------
 GLOBAL STYLE
 ----------------------------------*/
@@ -37,10 +53,29 @@ GLOBAL STYLE
   max-width: 1200px;
   margin: auto;
 }
+.section-pd {
+  padding: 5rem 0;
+}
+.section-bg {
+  background-color: rgb(65, 80, 134);
+}
 .flex {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.flex-1 {
+  flex: 1;
+}
+.sub-title {
+  display: block;
+  color: rgb(65, 80, 134);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-family: "Ubuntu", sans-serif;
+  letter-spacing: 1px;
+  margin-bottom: 0.625rem;
 }
 /*----------------------------------
 HEADER
@@ -246,7 +281,7 @@ HERO SECTION
       rgba(67, 67, 67, 0.8) 0%,
       rgba(0, 0, 0, 0.8) 100%
     ),
-    url("https://images.pexels.com/photos/5452223/pexels-photo-5452223.jpeg?auto=compress&cs=tinysrgb&w=600");
+    url("/assets/images/slide--1.jpg");
 }
 .slide:nth-child(2) {
   background-image: linear-gradient(
@@ -254,7 +289,7 @@ HERO SECTION
       rgba(67, 67, 67, 0.8) 0%,
       rgba(0, 0, 0, 0.8) 100%
     ),
-    url("https://images.pexels.com/photos/3957987/pexels-photo-3957987.jpeg?auto=compress&cs=tinysrgb&w=600");
+    url("/assets/images/slide--2.jpg");
 }
 .slide:nth-child(3) {
   background-image: linear-gradient(
@@ -262,7 +297,7 @@ HERO SECTION
       rgba(67, 67, 67, 0.8) 0%,
       rgba(0, 0, 0, 0.8) 100%
     ),
-    url("https://images.pexels.com/photos/4225920/pexels-photo-4225920.jpeg?auto=compress&cs=tinysrgb&w=600");
+    url("/assets/images/slide--3.jpg");
 }
 .hero-content {
   height: 100%;
@@ -304,20 +339,26 @@ HERO SECTION
 }
 .controler {
   position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
   color: rgb(255, 255, 255);
   border: none;
-  padding: 10px;
   cursor: pointer;
   z-index: 100;
+  transition: all 400ms ease;
 }
-.left {
+.controler:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.btn-left {
   left: 10px;
 }
 
-.right {
+.btn-right {
   right: 10px;
 }
 .paginator-container {
@@ -353,5 +394,71 @@ HERO SECTION
   .title-desc {
     font-size: 14px;
     width: 100%;
+  }
+}
+/*----------------------------------
+ABOUT SECTION
+----------------------------------*/
+.about-wrapper {
+  overflow: hidden;
+  align-items: stretch;
+  gap: 1rem;
+}
+.about-content,
+.about-showcase {
+  opacity: 0;
+  transition: all 1s ease;
+}
+.about-content {
+  transform: translateX(-100%);
+}
+.about-showcase {
+  transform: translateX(100%);
+}
+.about-content.in-view,
+.about-showcase.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+#about ul {
+  margin-bottom: 2rem;
+}
+#about ul li {
+  color: rgb(35, 35, 35);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+#about ul li::before {
+  content: "\f00C";
+  font-family: "Font Awesome 5 Free";
+  color: rgb(65, 80, 134);
+  font-size: 1rem;
+  padding-right: 10px;
+  font-weight: 900;
+}
+.booking-link {
+  display: block;
+  color: rgb(65, 80, 134);
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-family: "Ubuntu", sans-serif;
+  letter-spacing: 1px;
+  margin-bottom: 0.85rem;
+  cursor: pointer;
+}
+.booking-link span {
+  margin-left: 5px;
+}
+.booking-link:hover {
+  color: rgba(65, 80, 134, 0.9);
+}
+.about-showcase img {
+  min-height: 100%;
+  object-fit: cover;
+}
+@media screen and (max-width: 768px) {
+  .about-wrapper {
+    flex-direction: column;
   }
 }
