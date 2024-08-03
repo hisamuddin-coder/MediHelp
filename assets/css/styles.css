@@ -31,12 +31,19 @@ a {
 }
 h2 {
   color: rgb(35, 35, 35);
-  /* font-size: 2.5rem; */
   font-size: clamp(1.75rem, 1.2rem + 1.7vw, 2.5rem);
   font-weight: 900;
   font-family: "Ubuntu", sans-serif;
   letter-spacing: 1px;
   margin-bottom: 0.875rem;
+}
+h3 {
+  color: rgb(43, 43, 43);
+  font-size: 2rem;
+  font-weight: 900;
+  font-family: "Ubuntu", sans-serif;
+  letter-spacing: 1px;
+  margin-bottom: 0.5em;
 }
 h2 span {
   color: rgb(65, 80, 134);
@@ -244,6 +251,7 @@ NAVBAR
     transform-origin: top;
     transition: all 400ms ease;
     overflow: hidden;
+    z-index: 9;
   }
   .nav-links {
     all: unset;
@@ -476,65 +484,137 @@ ABOUT SECTION
 /*----------------------------------
 ABOUT SECTION
 ----------------------------------*/
-.department-wrapper {
-  align-items: stretch;
+.tabs-container {
+  align-items: flex-start;
   gap: 1.5rem;
 }
-.department-tabs {
+.tabs {
   flex: 9;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
 }
-.depatment-tab {
+.tab {
   background-color: rgb(243, 243, 243);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
   text-align: center;
+  justify-content: center;
   aspect-ratio: 1/1;
   cursor: pointer;
   transition: all 400ms ease;
 }
 .tab-icon {
   color: rgb(65, 80, 134);
+  background-color: rgb(255, 255, 255);
   font-size: 2.5rem;
   width: 2em;
   height: 2em;
-  background-color: rgb(255, 255, 255);
   border-radius: 50%;
-  margin-bottom: 1rem;
-  transition: all 400ms ease;
-  display: flex;
-  align-items: center;
   justify-content: center;
+  transition: all 400ms ease;
+  margin-bottom: 1rem;
 }
-.tab-heading {
+.tab-text {
   color: rgb(24, 139, 77);
   font-size: 1rem;
   font-weight: 900;
   font-family: "Ubantu", sans-serif;
 }
-.tab-content-container {
+.tab:hover,
+.tab.active {
+  background-color: rgb(65, 80, 134);
+}
+.tab:hover .tab-icon,
+.tab.active .tab-icon {
+  transform: scale(0.9);
+  color: rgb(24, 139, 77);
+}
+.tab-contents {
   flex: 3;
-  position: relative;
 }
-h3 {
-  color: rgb(43, 43, 43);
-  font-size: 2rem;
-  font-weight: 900;
-  font-family: "Ubuntu", sans-serif;
-  letter-spacing: 1px;
-  margin-bottom: 0.5em;
+.tab-content {
+  display: none;
 }
-
-.tab-btn-container {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  display: flex;
-  align-items: center;
+.tab-content.active {
+  display: block;
+}
+.tab-content p {
+  color: #777;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+.tab-btns {
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 2rem;
+}
+.tab-btn {
+  color: rgb(35, 35, 35);
+  font-size: 1rem;
+  background-color: rgb(243, 243, 243);
+  width: 3em;
+  height: 3em;
   justify-content: center;
-  gap: 1rem;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+}
+.tab-btn:hover {
+  background-color: rgba(243, 243, 243, 0.7);
+}
+@media screen and (max-width: 992px) {
+  .tabs-container {
+    flex-direction: column;
+  }
+  .tabs {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .tabs {
+    gap: 0.5rem;
+  }
+  .tab-icon {
+    font-size: 1.5rem;
+  }
+  .tab-text {
+    font-size: 0.875rem;
+  }
+}
+@media screen and (max-width: 548px) {
+  .tabs-container {
+    position: relative;
+    gap: 0;
+  }
+  .tabs {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-bottom: 0;
+  }
+  .tab {
+    position: absolute;
+    min-width: 200px;
+    left: 50%;
+    top: calc(20px + 36.677px);
+    transform: translateX(-50%);
+  }
+  .tab-content {
+    text-align: center;
+    position: relative;
+  }
+  .tab-content h3 {
+    margin-bottom: 240px;
+  }
+  .tab-btn {
+    position: absolute;
+    top: calc(100px + 20px + 36.677px);
+    transform: translateY(-50%);
+    margin-top: 0;
+  }
+  .tab-btn-right {
+    right: 0;
+  }
 }

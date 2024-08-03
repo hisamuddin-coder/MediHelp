@@ -114,3 +114,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setInterval(showNextSlide, 3000);
 });
+
+//////////////// TABBED COMPONENT  /////////////////////
+
+const tabs = document.querySelectorAll(".tab");
+const tabContainer = document.querySelector(".tabs");
+const tabContents = document.querySelectorAll(".tab-content");
+const tabBtnRight = document.querySelector(".tab-btn-right");
+const tabBtnLeft = document.querySelector(".tab-btn-left");
+
+let curTabIndex = 0;
+const totalTabs = tabs.length;
+
+function updateTab() {
+  tabs.forEach((tab, index) =>
+    tab.classList.toggle("active", index === curTabIndex)
+  );
+  tabContents.forEach((content) => content.classList.remove("active"));
+  const activeContent = document.querySelector(
+    `.tab-content-${curTabIndex + 1}`
+  );
+  if (activeContent) {
+    activeContent.classList.add("active");
+  }
+}
+
+tabContainer.addEventListener("click", (e) => {
+  const clickedTab = e.target.closest(".tab");
+  if (clickedTab) {
+    curTabIndex = Array.from(tabs).indexOf(clickedTab);
+    updateTab();
+  }
+});
+
+tabBtnRight.addEventListener("click", () => {
+  curTabIndex = (curTabIndex + 1) % totalTabs;
+  updateTab();
+});
+
+tabBtnLeft.addEventListener("click", () => {
+  curTabIndex = (curTabIndex - 1 + totalTabs) % totalTabs;
+  updateTab();
+});
+
+updateTab();
