@@ -1,4 +1,4 @@
-"use strict";
+("use strict");
 //////////////// SELECTORS /////////////////////
 const navToggle = document.querySelector(".nav-toggle");
 const navContainer = document.querySelector(".nav-links-container");
