@@ -95,6 +95,9 @@ GLOBAL STYLE
   letter-spacing: 1px;
   margin-bottom: 0.625rem;
 }
+.lazy-img {
+  filter: blur(20px);
+}
 /*----------------------------------
 HEADER
 ----------------------------------*/
